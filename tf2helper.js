@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         OPSkins TF2 Helper
-// @version      0.3
+// @version      0.3.1
 // @description  Adds "usable by" class name to some TF2 items, and informational hover text over effects.  TF:GO-style items are essentially ignored.
 // @author       Jake "rannmann" Forrester
 // @match        https://opskins.com/*440_2*
@@ -137,7 +137,9 @@ Paste the following into the dev console and replace the effects variable if you
 
             if (desc) {
                 effect = desc.substring(desc.indexOf("Effect:") + 8).trim();
-                $(this).parent().find('.item-desc').find('small:nth-of-type(2)').prop('title', 'Effect Ranked ' + effects[effect].rank + ' (top ' + effects[effect].rank_pct + '%) average value at ' + effects[effect].key_price + ' keys').css('cursor', 'pointer');
+                if (effect && effects.hasOwnProperty(effect)) {
+                    $(this).parent().find('.item-desc').find('small:nth-of-type(2)').prop('title', 'Effect Ranked ' + effects[effect].rank + ' (top ' + effects[effect].rank_pct + '%) average value at ' + effects[effect].key_price + ' keys').css('cursor', 'pointer');
+                }
             }
         });
     }
