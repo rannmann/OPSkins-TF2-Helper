@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         OPSkins TF2 Helper
-// @version      0.5
+// @version      0.5.1
 // @description  Adds "usable by" class name to some TF2 items, informational hover text over effect names, and highlights unusual items that are significantly underpriced compared to backpacktf.  TF:GO-style items are essentially ignored.
 // @author       Jake "rannmann" Forrester
 // @updateURL    https://raw.githubusercontent.com/rannmann/OPSkins-TF2-Helper/master/tf2helper.js
@@ -253,7 +253,7 @@ Paste the following into the dev console and replace the effects variable if you
                         if (bptfData.hasOwnProperty(mn)) {
                             if (bptfData[mn].hasOwnProperty(effect)) {
                                 var bpPrice = bptfData[mn][effect];
-                                var itemPrice = parseFloat($(this).parent().find('.item-amount').text().replace('$', ''));
+                                var itemPrice = parseFloat($(this).parent().find('.item-amount').text().replace('$', '').replace(',', ''));
                                 title = title + "\n\n== Specific Item Information ==";
                                 title = title + "\nBackpack TF Suggestion: " + formatCoins(bpPrice * 100); // Use the native opskins currency formatter
                                 if (itemPrice < bpPrice) {
